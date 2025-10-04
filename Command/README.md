@@ -13,6 +13,18 @@ foremost: Dùng để khôi phục file bị xóa hoặc bị ẩn trong ảnh �
 
 exiftool: Trích xuất metadata từ ảnh, video, tài liệu (rất hữu ích trong phân tích ảnh)
 
+base64 -d log.txt > hidden.png: Giải mã file log.txt thành base64 và lưu vào file hidden.png
+
+xdg-open hidden.png: mở file hidden.png bằng trình xem ảnh trên hệ thống
+
+tesseract hidden.png output.txt: Trích xuất văn bản từ ảnh và lưu vào file
+
+hexedit file: dùng để chỉnh sửa hex của file
+
+steghide: là công cụ dấu và trích xuất dữ liệu trong ảnh/audio 
+
+
+
 hashdeep: Tạo và so sánh hash của 2 file để kiểm tra tính toàn vẹn
 
 md5sum, sha256sum: Tính toán hash md5 hoặc sha256 của file
@@ -90,3 +102,4 @@ Mẹo hay khi dùng tùy chọn:
 - Dùng man tên_lệnh để xem tất cả các tùy chọn: man grep
 - Dùng --help để xem nhanh: grep --help
 - Kết hợp nhiều tùy chọn: ls -lh(Hiển thị chi tiết + dung lượng dễ đọc)
+
