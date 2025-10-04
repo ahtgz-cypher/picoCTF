@@ -21,9 +21,8 @@ tesseract hidden.png output.txt: Trích xuất văn bản từ ảnh và lưu v�
 
 hexedit file: dùng để chỉnh sửa hex của file
 
-steghide: là công cụ dấu và trích xuất dữ liệu trong ảnh/audio 
-
-
+steghide: là công cụ dấu và trích xuất dữ liệu trong ảnh/audio
+VD: steghide extract -sf hidden.png -p 12345: Dùng để trích xuất dữ liệu với mật khẩu để trích xuất dữ liệu giấu trong ảnh
 
 hashdeep: Tạo và so sánh hash của 2 file để kiểm tra tính toàn vẹn
 
