@@ -1,6 +1,16 @@
 # Các lệnh thường dùng trong Digital Forensics
 ## Nhóm lệnh phân tích file và dữ liệu:
 ```
+head [tùy chọn] tên_file
+-n: Số dòng cần hiển thị
+VD: head -n 5 file.txt: Hiển thị 5 dòng đầu tiên
+-c: Số byte cần hiển thị
+VD: head -c 100 file.txt: Hiển thị 100 byte đầu tiên
+-v: Hiển thị tên file trước nội dung
+VD: head -v file.txt: Hữu ích khi xử lí nhiều file
+-q: không hiển thị file
+VD: head -q file1 file2: Gộp nội dung nhiều file mà không in tên
+
 file: dùng để kiểm tra loại file dựa trên header (rất hữu ích để phát hiện các file bị đổi đuôi
 
 strings: dùng để trích xuất các chuỗi ASCII có thể đọc được từ file nhị phân
@@ -102,3 +112,17 @@ Mẹo hay khi dùng tùy chọn:
 - Dùng --help để xem nhanh: grep --help
 - Kết hợp nhiều tùy chọn: ls -lh(Hiển thị chi tiết + dung lượng dễ đọc)
 
+Ứng dụng trong forensics:
+- Xác định định dạng file: Kiểm tra header để biết file có phải PNG, ZIP, ELF,...
+  ```
+  head -c 8 tên_file
+  ```
+- Xem nội dung log hoặc file văn bản:
+  ```
+  head -n 10 logs.txt
+  ```
+- Phân tích file nhị phân hoặc RAM dump:
+  ```
+  head -c 512 memory.dump |xxd
+  ```
+  
