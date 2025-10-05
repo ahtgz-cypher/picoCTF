@@ -8,7 +8,7 @@ mình đã kết nối tới đúng server:
 ```
 cat checksum.txt
 ```
-Và so sánh hash để đảm bảo đúng, sau đó mình thử kiểm tra files với lệnh:
+Và để tính mã SHA256 của tất cả các file trong thư mục files và so sánh với mã hash trong check_sum.txt để đảm bảo đúng:
 ```
 sha256sum files/* |grep -f checksum.txt
 ```
