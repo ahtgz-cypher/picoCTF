@@ -17,7 +17,7 @@ MESSAGE=[system] Activating via systemd: service name='org.bluez' unit='dbus-org
 ```
 Thấy không tìm thấy được gì nên mình đã thử phân tích disk layout bằng lệnh:
 ```
-fdisk disko-3.dd
+fdisk -l disko-3.dd
 ```
 Và nhận được kết quả:
 ```
