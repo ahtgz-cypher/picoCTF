@@ -33,7 +33,7 @@ Không thấy có phân vùng rõ ràng, điều này có nghĩa là file system
 Sau dó mình đã thử Mount the Disk image
 ```
 sudo mkdir /tmp/disko-3
-sudo mount -o  disko-3.dd /tmp/disko-3
+sudo mount -o loop disko-3.dd /tmp/disko-3
 ```
 Sau khi mount, mình đã thử list nội dung ở đó:
 ```
