@@ -51,3 +51,25 @@ cat flag
 ```
 Và mình đã nhận được flag:
 picoCTF{...}
+
+- fdisk -l: liệt kê bảng phân vùng của một thiết bị hoặc một file ảnh đĩa, liệt kê tất cả các ổ đĩa và ảnh có thể đọc được, fdisk -l /dev/sdb: liệt kê tất cả các phân vùng của /dev/sdb
+-> Kết quả: Cho biết có bao nhiêu partition, bắt đầu, kết thúc ở sector nào, kích thước, kiểu (Linux, NTFS,...). Dùng để biết cần mount offset bao nhiêu khi mount ảnh đĩa
+
+- sudo mount -o loop,ro disko-3.dd /tmp/disko-3
+  Trong đó:
+  -o loop: o là option, gắn file như một block device ảo
+  ro: read-only
+
+  Xem partition table dùng: mmls disko-3.dd
+  hoặc
+  fdisk -l disko-3.dd
+  
+  offset = start sector + sector size
+  VD: 2048 * 512 = 1048576
+
+  sudo mount -o loop,offset=1048576 disko-3.dd /tmp/disko-3
+
+  - Lưu ý:
+    + Luôn mount read-only (ro) để tránh làm thay đổi evidence
+    + Trước khi mount, tốt nhất dùng mmls/fdisk -l để xác định offset chính xác
+    + dd hay losetup có thể dùng để trích partition riêng ra
