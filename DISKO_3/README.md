@@ -56,8 +56,27 @@ picoCTF{...}
 -> Kết quả: Cho biết có bao nhiêu partition, bắt đầu, kết thúc ở sector nào, kích thước, kiểu (Linux, NTFS,...). Dùng để biết cần mount offset bao nhiêu khi mount ảnh đĩa
 
 - sudo mount -o loop,ro disko-3.dd /tmp/disko-3
+- 
   Trong đó:
+
+  ```
+  là để mount(gắn kết) file disko-3.dd - vốn là 1 image(ảnh đĩa) - vào thư mục /tmp/disko-3 để có thể duyệt nội dung của nó như một ổ đĩa thật
+  mount: là lệnh dùng để gắn kết hệ thống tập tin
+  -o loop: cho phép mount một file image (vd: .dd, .iso, .img,...) như thể nó là một thiết bị đĩa thật
+
+  Quy trình thường dùng:
+  mkdir /tmp/disko-3
+  sudo mount -o loop disko-3/.dd /tmp/disko-3
+  ls /tmp/disko-3
+  
+  - Nếu file .dd có nhiều phân vùng, thì sẽ cần xác định offset của phân vùng rồi mount thủ công, ví dụ:
+  fdisk -l disko-3.dd #Xem thông tin phân vùng
+  và sau đó mount
+  sudo mount -o loop, offset=$((sector_offset)*512) disko-3.dd /tmp/disko-3
+  trong đó sector_offset là giá trị Start sector lấy từ fdisk -l
+  ```
   -o loop: o là option, gắn file như một block device ảo
+  
   ro: read-only
 
   Xem partition table dùng: mmls disko-3.dd
