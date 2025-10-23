@@ -44,7 +44,14 @@ IV. Liên quan tới forensics /CTF
   hashcat -m 22100 (crack Bitlocker)
   bde mount / dislocker (mở khóa và mount ổ sau khi có key)
 ``` 
-sau đó mình dùng lệnh bitlocker2john bitlocker-1.dd > bitlocker.hash, sau đó dùng lệnh cat bitlocker.hash và chỉ lấy password của file, sau đó dùng lệnh hashcat -m 22100 -a 0 bitlocker.txt /usr/share/wordlists/rockyou.txt, sau đó dùng lệnh sudo bdemount -p 'jacqueline' bitlocker-1.dd /tmp/bitlocker sau đó dùng quyền root bằng lệnh sudo su để đi đến file tmp, và dùng lệnh cd /tmp/bitlocker sau đó ls -la ra thì thấy có file bde1 và dùng strings bde1 grep -i picoCTF
+sau đó mình dùng lệnh bitlocker2john -i bitlocker-1.dd > bitlocker.hash, sau đó dùng lệnh cat bitlocker.hash và chỉ lấy password của file
+```
+$bitlocker$0$16$cb4809fe9628471a411f8380e0f668db$1048576$12$d04d9c58eed6da010a000000$60$68156e51e53f0a01c076a32ba2b2999afffce8530fbe5d84b4c19ac71f6c79375b87d40c2d871ed2b7b5559d71ba31b6779c6f41412fd6869442d66d
+```
+- Sau đó dùng lệnh mv để đổi tên file từ đuôi .hash về đuôi .txt để crack. Sau đó dùng lệnh hashcat -m 22100 -a 0 bitlocker.txt /usr/share/wordlists/rockyou.txt
+- Nếu bạn đã làm rồi thì bạn sẽ cần thêm --show để hiển thị password bạn đã tìm được trước đó, sau đó dùng lệnh:
+``` sudo bdemount -p 'jacqueline' bitlocker-1.dd /tmp/bitlocker```
+- Sau đó dùng quyền root bằng lệnh sudo su để đi đến file tmp, và dùng lệnh cd /tmp/bitlocker sau đó ls -la ra thì thấy có file bde1 và dùng strings bde1 grep -i picoCTF
 và nhận được flag
 picoCTF{...}
 
