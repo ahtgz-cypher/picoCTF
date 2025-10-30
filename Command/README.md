@@ -11,6 +11,8 @@ VD: head -v file.txt: Hữu ích khi xử lí nhiều file
 -q: không hiển thị file
 VD: head -q file1 file2: Gộp nội dung nhiều file mà không in tên
 
+tesseract file.jpg file.txt: dùng để ghi nội dung text ra
+
 file: dùng để kiểm tra loại file dựa trên header (rất hữu ích để phát hiện các file bị đổi đuôi
 
 strings: dùng để trích xuất các chuỗi ASCII có thể đọc được từ file nhị phân
