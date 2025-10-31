@@ -23,4 +23,7 @@ Units are in 512-byte sectors
 004:  000:002   0001140736   0002097151   0000956416   Linux (0x83)
 ```
 It seperated three partition, and i try open it by AutoPsy and i find something important
+
 <img width="1175" height="684" alt="image" src="https://github.com/user-attachments/assets/317a1466-918c-4414-9475-f885fe2624ac" />
+ After that i try open file disk.flag.img by bless to find strings innocuous and i observe it carefully and i realize flag seperated many partiton and i try copy it and put them together and i reveived the flag:
+ picoCTF{...}
