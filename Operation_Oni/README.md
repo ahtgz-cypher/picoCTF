@@ -79,8 +79,47 @@ KZb1FVmeBfnVjyHcGYosAAAADnJvb3RAbG9jYWxob3N0AQIDBAUGBw==
 ┌──(kali㉿kali)-[~/Downloads/pico2022/Operation_Oni]
 └─$ icat -o 206848 disk.img 2345 > key   
 ```
+And if you take this key to connect sever, server will require you enter password
+```
+┌──(kali㉿kali)-[~/Downloads/pico2022/Operation_Oni]
+└─$  ssh -i key -p 61629 ctf-player@saturn.picoctf.net
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0664 for 'key' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "key": bad permissions
+ctf-player@saturn.picoctf.net's password: 
+Permission denied, please try again.
+ctf-player@saturn.picoctf.net's password: 
+Permission denied, please try again.
+ctf-player@saturn.picoctf.net's password: 
+ctf-player@saturn.picoctf.net: Permission denied (publickey,password).
+```
+And you just need authorization rm to file private key, you will connect with sever:
 As you can see, we had private key, and now we will launch instance and take flag:
 ```
+┌──(kali㉿kali)-[~/Downloads/pico2022/Operation_Oni]
+└─$ ls -la                    
+total 235540
+drwxrwxr-x  2 kali kali      4096 Nov 15 09:59 .
+drwxrwxr-x 10 kali kali      4096 Nov 13 03:49 ..
+-rw-rw-r--  1 kali kali 241172480 Aug  4  2023 disk.img
+-rw-rw-r--  1 kali kali       411 Nov 15 09:59 key
+-rw-rw-r--  1 kali kali        96 Nov 15 09:59 keypl
+
+┌──(kali㉿kali)-[~/Downloads/pico2022/Operation_Oni]
+└─$ chmod 600 key                                                                                                                                                                                                                               
+┌──(kali㉿kali)-[~/Downloads/pico2022/Operation_Oni]
+└─$ ls -la
+total 235540
+drwxrwxr-x  2 kali kali      4096 Nov 15 09:59 .
+drwxrwxr-x 10 kali kali      4096 Nov 13 03:49 ..
+-rw-rw-r--  1 kali kali 241172480 Aug  4  2023 disk.img
+-rw-------  1 kali kali       411 Nov 15 09:59 key
+-rw-rw-r--  1 kali kali        96 Nov 15 09:59 keypl
+
 ssh -i key_file -p 49741 ctf-player@saturn.picoctf.net
 we have to edit key_file to key which we saved
 ┌──(kali㉿kali)-[~/Downloads/pico2022/Operation_Oni]
